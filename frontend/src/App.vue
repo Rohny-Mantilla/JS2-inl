@@ -1,6 +1,10 @@
 <template>
-  <navbar />
-  <router-view />
+  <Navbar />
+  <div class="bg-dark bg-gradient">
+    <div class="container">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script>

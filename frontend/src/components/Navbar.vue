@@ -1,8 +1,8 @@
 <template>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark text-light bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- Container wrapper -->
-    <div class="container-fluid">
+    <div class="container">
       <!-- Toggle button -->
       <button
         class="navbar-toggler"
@@ -19,24 +19,19 @@
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-            height="15"
-            alt="MDB Logo"
-            loading="lazy"
-          />
-        </a>
+        <router-link class="navbar-brand mt-2 mt-lg-0" to="/">
+          <i class="fa-brands h2 fa-shopware me-2"></i> Shopware.se
+        </router-link>
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Dashboard</a>
+            <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Team</a>
+            <router-link class="nav-link" to="/products">Products</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Projects</a>
+            <router-link class="nav-link" to="/about">About Us</router-link>
           </li>
         </ul>
         <!-- Left links -->
@@ -44,12 +39,7 @@
       <!-- Collapsible wrapper -->
 
       <!-- Right elements -->
-      <div class="d-flex align-items-center">
-        <!-- Icon -->
-        <a class="text-reset me-3" href="#">
-          <i class="fas fa-shopping-cart"></i>
-        </a>
-
+      <div class="d-flex align-items-center text-light">
         <!-- Notifications -->
         <div class="dropdown">
           <a
@@ -60,51 +50,37 @@
             data-mdb-toggle="dropdown"
             aria-expanded="false"
           >
-            <i class="fas fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+            <i class="fas fa-shopping-cart"></i>
+            <span v-if="cartItemCount" class="badge rounded-pill badge-notification bg-danger">{{
+              cartItemCount
+            }}</span>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-            <li>
-              <a class="dropdown-item" href="#">Some news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Another news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
+          <div class="dropdown-menu dropdown-menu-end shopping-cart" aria-labelledby="navbarDropdownMenuLink">
+            <ShoppingCart />
+          </div>
         </div>
         <!-- Avatar -->
-        <div class="dropdown">
+        <div class="dropdown" v-if="loggedIn">
           <a
-            class="dropdown-toggle d-flex align-items-center hidden-arrow"
+            class="text-reset dropdown-toggle"
             href="#"
             id="navbarDropdownMenuAvatar"
             role="button"
             data-mdb-toggle="dropdown"
             aria-expanded="false"
           >
-            <img
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-              class="rounded-circle"
-              height="25"
-              alt="Black and White Portrait of a Man"
-              loading="lazy"
-            />
+            <i class="fa-solid fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
             <li>
-              <a class="dropdown-item" href="#">My profile</a>
+              <router-link class="dropdown-item" to="/myprofile">My profile</router-link>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Settings</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Logout</a>
+              <router-link class="dropdown-item" @click="logout" to="/login">Logout</router-link>
             </li>
           </ul>
         </div>
+        <router-link to="/login" class="nav-link text-light" v-else>Login</router-link>
       </div>
       <!-- Right elements -->
     </div>

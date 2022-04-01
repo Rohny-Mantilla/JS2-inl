@@ -1,5 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about d-flex vh-100 text-center justify-content-center text-light">
+    <h1 class="mt-5">Website under construction</h1>
+    <i class="fa-solid fa-triangle-person-digging"></i>
   </div>
 </template>
