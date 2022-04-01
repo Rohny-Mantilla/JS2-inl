@@ -9,7 +9,8 @@ router.get("/:id", productModel.getProductById);
 
 router.post("/", productModel.createProduct);
 
-// router.patch("/:id");
+router.patch("/:id", productModel.updateProduct);
+router.put("/:id", productModel.updateProduct);
 
 router.delete("/:id", productModel.deleteProduct);
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="pt-3">
     <ProductCardDeck />
   </div>
 </template>

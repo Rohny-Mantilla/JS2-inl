@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <div class="bg-dark bg-gradient">
-    <div class="container">
+    <div class="container pt-5">
       <router-view />
     </div>
   </div>
