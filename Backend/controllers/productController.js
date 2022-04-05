@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const productModel = require("../models/products/productModel");
+const auth = require("../authentication/auth");
 
 //Routers
 
@@ -7,11 +8,11 @@ router.get("/", productModel.getProducts);
 
 router.get("/:id", productModel.getProductById);
 
-router.post("/", productModel.createProduct);
+router.post("/", auth.verifyToken, productModel.createProduct);
 
-router.patch("/:id", productModel.updateProduct);
-router.put("/:id", productModel.updateProduct);
+router.patch("/:id", auth.verifyToken, productModel.updateProduct);
+router.put("/:id", auth.verifyToken, productModel.updateProduct);
 
-router.delete("/:id", productModel.deleteProduct);
+router.delete("/:id", auth.verifyToken, productModel.deleteProduct);
 
 module.exports = router;

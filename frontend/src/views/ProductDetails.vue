@@ -1,5 +1,5 @@
 <template>
-  <div class="vh-100">
+  <div class="vh-100 mt-5">
     <div v-if="product" class="card">
       <div class="row card-body">
         <div class="col-lg-5">
@@ -10,7 +10,7 @@
             <h1>{{ product.name }}</h1>
             <p class="h3 text-danger">{{ product.price }} SEK</p>
           </div>
-          <div class="mt-6 card-text">
+          <div class="pt-2 card-text">
             <p>{{ product.desc }}</p>
           </div>
           <div class="text-end pt-4">

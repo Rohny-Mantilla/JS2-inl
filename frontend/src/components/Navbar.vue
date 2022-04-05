@@ -90,9 +90,22 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import ShoppingCart from "./shoppingCart/ShoppingCart.vue";
 export default {
+  components: { ShoppingCart },
   name: "PrimaryNavigation",
+  computed: {
+    ...mapGetters(["cartItemCount", "loggedIn"]),
+  },
+  methods: {
+    ...mapActions(["logout"]),
+  },
 };
 </script>
 
-<style></style>
+<style scoped>
+.shopping-cart {
+  min-width: 450px;
+}
+</style>
